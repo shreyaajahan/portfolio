@@ -26,10 +26,7 @@ export default function Contact({contact}){
               <a href={`mailto:${contact.email}`} className="text-primary-600">{contact.email}</a>
             </div>
 
-            <div className="flex items-center gap-3">
-              <span className="text-slate-600">📞</span>
-              <a href={`tel:${contact.phone}`} className="text-slate-700">{contact.phone}</a>
-            </div>
+            {/* Phone removed from contact section per request */}
 
             {contact.linkedin && (
               <div className="flex items-center gap-3">

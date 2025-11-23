@@ -1,13 +1,23 @@
-import React from 'react'
-import { motion } from 'framer-motion'
+import React, { useState, useEffect } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 
-function NavLink({href, children}){
+function NavLink({href, children, onClick}){
   return (
-    <a href={href} className="text-sm md:text-base font-semibold tracking-wide px-3 py-2 rounded-md hover:bg-primary-50 transition-colors focus:outline-none focus:ring-2 focus:ring-primary-500">{children}</a>
+    <a href={href} onClick={onClick} className="text-sm md:text-base font-semibold tracking-wide px-3 py-2 rounded-md hover:bg-primary-50 transition-colors focus:outline-none focus:ring-2 focus:ring-primary-500">{children}</a>
   )
 }
 
 export default function Header({nav}){
+  const [open, setOpen] = useState(false)
+
+  useEffect(()=>{
+    function onKey(e){
+      if(e.key === 'Escape') setOpen(false)
+    }
+    window.addEventListener('keydown', onKey)
+    return ()=> window.removeEventListener('keydown', onKey)
+  },[])
+
   const variants = {
     hidden: { y: -12, opacity: 0 },
     visible: { y: 0, opacity: 1, transition: { duration: 0.5, ease: 'easeOut' } }
@@ -26,9 +36,24 @@ export default function Header({nav}){
           ))}
         </nav>
         <div className="flex items-center gap-3">
-          <button aria-label="Open mobile menu" className="md:hidden px-2 py-1">☰</button>
+          <button aria-label={open ? 'Close mobile menu' : 'Open mobile menu'} aria-expanded={open} onClick={()=>setOpen(v=>!v)} className="md:hidden px-3 py-2 rounded-md hover:bg-primary-50 focus:outline-none focus:ring-2 focus:ring-primary-500">{open ? '✕' : '☰'}</button>
         </div>
       </div>
+
+      <AnimatePresence>
+        {open && (
+          <motion.nav initial={{opacity:0,y:-8}} animate={{opacity:1,y:0}} exit={{opacity:0,y:-8}} transition={{duration:0.22}} className="md:hidden bg-white border-b border-slate-200">
+            <div className="container py-4">
+              <div className="flex flex-col gap-2">
+                {nav.map(item=> (
+                  <a key={item.id} href={`#${item.id}`} onClick={()=>setOpen(false)} className="block px-4 py-3 rounded-md text-base font-medium hover:bg-primary-50">{item.label}</a>
+                ))}
+              </div>
+            </div>
+          </motion.nav>
+        )}
+      </AnimatePresence>
+
     </motion.header>
   )
 }
