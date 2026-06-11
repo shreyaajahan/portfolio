@@ -65,11 +65,11 @@ const data = {
   projects: [
     {
       id: 'book-nook',
-      title: 'BOOK NOOK',
-      desc: 'Online book store web application for browsing and managing books. Separate panels for old and new books.',
-      tech: ['React','Node.js','Firebase','Express.js'],
+      title: 'QUIZ APP',
+      desc: 'Developed a full-stack Quiz Management System using React.js, Node.js, Express.js, and MongoDB. Implemented secure user authentication with JWT and bcrypt, role-based access control for Admin and User functionalities, and features such as quiz participation, score tracking, quiz history, and leaderboard management. Deployed the application using Vercel and Render.',
+      tech: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'JWT','bcrypt', 'VS Code'],
       demo: '',
-      github: 'https://github.com/shreyaajahan/book-store'
+      github: 'https://quiz-app-plum-nu.vercel.app/'
     },
     {
       id: 'job-portal',
