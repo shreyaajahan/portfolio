@@ -74,7 +74,7 @@ const data = {
     {
       id: 'job-portal',
       title: 'JOB PORTAL',
-      desc: 'Job searching and recruitment platform with secure auth, media management, and application tracking.',
+      desc: 'Job searching & Recruitement Platform Developed a full-stack job portal platform that enables employers to post job openings and job seekers to search and apply for jobs efficiently. The application integrates Clerk for secure authentication and user management, Cloudinary for storing and managing media files such as company logos.Implemented role-based access control to differentiate functionalities for recruiters and applicants, along with features like job posting, job search, and application tracking.',
       tech: ['React','Node.js','MongoDB'],
       demo: 'https://job-portal-client-three-psi.vercel.app/',
       github: ''
